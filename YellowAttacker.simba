@@ -1,0 +1,87 @@
+program Experiments;
+
+procedure OpenCoins
+var x,y:Integer;
+begin
+    if FindColorSpiralTolerance(x, y, 4610915,554,204,730,464,0) then
+    begin
+      wait(200);
+      MoveMouse(x + 5, y);
+      wait(100);
+      ClickMouse(x,y, 1);
+      wait(250);
+    end;
+end;
+procedure DrinkHeal
+var x,y:Integer;
+
+begin    //if health low
+    if FindColorSpiralTolerance(x, y, 4607403,554,204,730,464,5) or
+    FindColorSpiralTolerance(x, y, 5133487,554,204,730,464,5) then
+    begin
+      wait(300);
+      MoveMouse(x + 5, y);
+      wait(200);
+      ClickMouse(x, y, 1);
+      wait(300);
+      MoveMouse(644, 185);
+      ClickMouse(x, y, 1);
+      wait(200);
+    end;
+end;
+procedure Drop
+var x,y:Integer;
+
+begin
+     if FindColorSpiralTolerance(x, y, 6184549,562,213,728,420, 0) or //tuna
+     FindColorSpiralTolerance(x, y, 8816271,562,213,728,420, 0) or //salmon
+     FindColorSpiralTolerance(x, y, 6118756,562,213,728,420,0) or//lobster
+     FindColorSpiralTolerance(x, y, 8948114,562,213,728,499,0) or//lobster
+     FindColorSpiralTolerance(x, y, 2774666,562,213,728,499,0) or//ore
+     FindColorSpiralTolerance(x, y, 7895168,554,204,730,420,0) then //pot
+     begin
+      wait(100);
+      MoveMouse(x + 5, y);
+      wait(100);
+      ClickMouse(x, y, mouse_Right);  //drop R click  // color9013650
+      wait(100);
+      MoveMouse(x, y +60);
+      wait(100);
+      ClickMouse(x, y, 1);
+      wait(100);
+      MoveMouse(681, 185); //invo safe click
+      ClickMouse(x, y, 1);
+      wait(10);
+      end;
+end;
+procedure CheckCombat
+var x,y:Integer;
+begin
+  if FindColorSpiralTolerance(x, y, 65280,232,135,275,196,1) or //255
+     FindColorSpiralTolerance(x, y, 65280,232,135,275,196,1) then
+  begin
+    wait(10000)
+  end;
+end;
+procedure Fight
+var x,y:Integer;
+begin
+  if FindColorSpiralTolerance(x, y, 65535,11,33,515,363,0) or //yellow
+     FindColorSpiralTolerance(x, y, 65535,11,33,515,363,0) then
+  begin
+    CheckCombat;
+    MoveMouse(x +6, y+2);
+    wait(10);
+    CheckCombat;
+    ClickMouse(x ,y, mouse_Left);
+    wait(10000);
+
+  end;
+end;
+var i: Integer
+var Open: Integer
+var Heal: Integer
+begin
+  for i:=0 to 300 do
+    Fight;
+end.
