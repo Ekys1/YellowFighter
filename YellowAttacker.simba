@@ -1,12 +1,14 @@
 program Experiments;
 
-procedure OpenCoins
+procedure Loot
 var x,y:Integer;
 begin
-    if FindColorSpiralTolerance(x, y, 4610915,554,204,730,464,0) then
+    if FindColorSpiralTolerance(x, y, 1644827,554,204,730,464,0) or
+    FindColorSpiralTolerance(x, y, 1842485,554,204,730,464,0) or
+    FindColorSpiralTolerance(x, y, 2369092,554,204,730,464,0) then
     begin
       wait(200);
-      MoveMouse(x + 5, y);
+      MoveMouse(x + 2, y);
       wait(100);
       ClickMouse(x,y, 1);
       wait(250);
@@ -60,22 +62,24 @@ begin
   if FindColorSpiralTolerance(x, y, 65280,232,135,275,196,1) or //255
      FindColorSpiralTolerance(x, y, 65280,232,135,275,196,1) then
   begin
-    wait(10000)
+    wait(5000)
   end;
 end;
 procedure Fight
 var x,y:Integer;
+var i: Integer;
 begin
   if FindColorSpiralTolerance(x, y, 65535,11,33,515,363,0) or //yellow
      FindColorSpiralTolerance(x, y, 65535,11,33,515,363,0) then
   begin
+  for i:= 0 to 6 do
+    begin
     CheckCombat;
+    end;
     MoveMouse(x +6, y+2);
     wait(10);
-    CheckCombat;
     ClickMouse(x ,y, mouse_Left);
-    wait(10000);
-
+    wait(500);
   end;
 end;
 var i: Integer
